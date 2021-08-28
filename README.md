@@ -9,6 +9,7 @@ This script converts the Pascal-VOC format *.xml files output from VoTT ver2.* t
 
 Specify the directory output from VoTT (Pascal-VOC format) as the target.
 
+The following is the structure of the target directory to be analyzed.
 ```
 .
 └── ****-PascalVOC-export
