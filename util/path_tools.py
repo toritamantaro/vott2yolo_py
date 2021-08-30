@@ -26,8 +26,16 @@ class PathHandler(metaclass=ABCMeta):
 
 
 class GetFileListBySuffix(PathHandler):
-
     def __init__(self, file_suffix: Union[str, List[str]], recursive: bool = False):
+        """
+        This class is for getting file list with specified suffix.
+
+        Parameters
+        ----------
+        file_suffix : Specify the suffix of the files to search.
+        recursive : Whether to search recursively or not.
+        """
+
         assert file_suffix, "Need to specify the file extension. It is currently empty."
         self._recursive = recursive
 
@@ -53,9 +61,20 @@ class GetFileListBySuffix(PathHandler):
 
 class OutputFilePathGenerator(PathHandler):
     def __init__(self, out_suffix: str, output_dir: str = None, add_stem: str = None):
-        self._output_suffix = out_suffix  # 生成する（出力）予定のファイルの拡張子
-        self._add_stem = add_stem  # 入力したファイル名に文字列を追加したい場合に使用する
-        self._output_dir = output_dir  # 出力先のディレクトリ
+        """
+        This class is is for generating a new file path.
+        The new file path to be generated is based on the input file path,
+        with the specified output directory and suffix.
+
+        Parameters
+        ----------
+        out_suffix : The suffix of the file path to be generated.
+        output_dir : The output directory path of the file path to be generated.
+        add_stem : Strings to be added to the generated file path.
+        """
+        self._output_suffix = out_suffix
+        self._add_stem = add_stem
+        self._output_dir = output_dir
 
     def __call__(self, input_file_path: str, output_dir=None, add_stem: str = None):
         assert self._output_suffix, 'Specify the suffix of the output file!'

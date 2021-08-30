@@ -5,6 +5,9 @@
 
 This script converts the Pascal-VOC format *.xml files output from VoTT ver2.* to the yolo format *.txt files.
 
+
+Requires `Python` >= 3.7 
+
 ## Usage
 
 Specify the directory output from VoTT (Pascal-VOC format) as the target.

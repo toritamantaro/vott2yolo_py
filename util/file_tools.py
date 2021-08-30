@@ -26,10 +26,10 @@ class FileHandler(metaclass=ABCMeta):
         suffix = '|'.join(suffix_list).upper()
         pattern_str = r'\.(' + suffix + r')$'
         if not re.search(pattern_str, file_name.upper()):
-            mes = f'''
-            Suffix of the file name should be "{suffix}".
+            mes = f"""
+            Suffix of the file name should be '{suffix}'.
             Current file name ： {file_name}
-            '''
+            """
             logger.error(mes)
             return False
         return True
@@ -187,30 +187,22 @@ class VocXmlAnalyzer(FileHandler):
 
 
 if __name__ == "__main__":
-    file = 'hansen.mp4#t=0.033333.xml'
+    file = 'hoge.mp4#t=0.033333.xml'
 
     xa = VocXmlAnalyzer()
 
     data = xa.parse(file)
 
-    print(data.size)
+    if data is not None:
+        print(data.size)
 
-    objects = data.objects
-    for d in objects:
-        print(d)
+        objects = data.objects
+        for d in objects:
+            print(d)
 
     # yaml
     yh = YamlHandler()
 
-    '''
-    yaml ファイル内で、
-        names: ['hoge', 'fuga' ]
-    と
-        names:
-        - hoge
-        - fuga
-    は同義？
-    '''
     dic_data = {
         'train': 'data/train/images',
         'val': 'data/valid/images',
@@ -242,5 +234,5 @@ if __name__ == "__main__":
 
     thd.write(str_list, file)
 
-    strs = thd.read(file)
-    print(strs)
+    ss = thd.read(file)
+    print(ss)
